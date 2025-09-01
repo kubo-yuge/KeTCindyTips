@@ -1,0 +1,63 @@
+\documentclass{jarticle}
+\usepackage{ketpic2e,ketlayer2e,graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{emath,emathEy,emathMw} %% emathのコマンドを使う
+\usepackage[c]{EMesvect}% ベクトル用の矢印
+\def\tasukikata{2}% emathのタスキがけの型を選択
+\usepackage{cancel}%% 約分の斜線を入れるため
+\usepackage[dvipdfmx]{pict2e}
+\usepackage{okumacro}
+%\usepackage{pagecolor}\newpagecolor{red}
+\input{(kubo)OvalArrow24a.txt}
+
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+
+\setmargin{30}{20}{20}{20}
+
+\begin{document}
+
+\Large
+kettaskで使われている色を確認する。\\
+先頭が実際の数値指定、右に近い色を名前で指定して列挙\\
+
+\fcolorbox[rgb]{0,0,0}{1.00,1.00,0.00}{[1.00,1.00,0.00]}：
+\fcolorbox{black}{Yellow}{Yellow}，
+\fcolorbox{black}{yellow}{yellow}\\
+
+\fcolorbox[rgb]{0,0,0}{0.74,0.95,1.00}{[0.74,0.95,1.00]}：
+\fcolorbox{black}{PaleTurquoise}{PaleTurquoise}，
+\fcolorbox{black}{Cyan}{Cyan}\\
+
+\fcolorbox[rgb]{0,0,0}{1.00,0.79,0.85}{[1.00,0.79,0.85]}：
+\fcolorbox{black}{Pink}{Pink}\\
+
+\fcolorbox[rgb]{0,0,0}{0.90,1.00,0.70}{[0.90,1.00,0.70]}：
+\fcolorbox{black}{PaleGreen}{PaleGreen}，
+\fcolorbox{black}{GreenYellow}{GreenYellow}，
+\fcolorbox{black}{YellowGreen}{YellowGreen}\\
+
+\fcolorbox[rgb]{0,0,0}{0.00,1.00,0.00}{[0.00,1.00,0.00]}：
+\fcolorbox{black}{green}{green}，
+\fcolorbox{black}{Lime}{Lime}，
+\fcolorbox{black}{Green}{Green}\\
+
+\fcolorbox[rgb]{0,0,0}{1.00,0.00,0.00}{[1.00,0.00,0.00]}：
+\fcolorbox{black}{red}{red}\\
+
+\fcolorbox[rgb]{0,0,0}{1.00,0.75,0.45}{[1.00,0.75,0.45]}：
+\fcolorbox{black}{Apricot}{Apricot}，
+\fcolorbox{black}{Orange}{Orange}，
+\fcolorbox{black}{orange}{orange}，
+\fcolorbox{black}{LightSalmon}{LightSalmon}，\\
+\fcolorbox{black}{Goldenrod1}{Goldenrod1}，
+\fcolorbox{black}{Peach}{Peach}，
+\fcolorbox{black}{PeachPuff}{PeachPuff}\\
+
+
+※　xcolorで複数のオプションの色を指定するため次のようにした。\\
+\verb|\usepackage[dvipsnames,svgnames,x11names]{xcolor}|\\
+colorを使った後でも使える。xcolorを使った後にオプション付きのxcolorは，エラーが出るので，初めに指定するときにオプションを指定する。
+
+大文字と小文字を区別する。\\
+
+\end{document}
