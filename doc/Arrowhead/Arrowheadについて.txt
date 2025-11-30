@@ -1,0 +1,44 @@
+Refference(2023年9月28日)p.7 にある例をコピーして実行しても，
+うまく動かない。次のように修正すると動いた。
+
+（１）p.7 の説明通りは次のとおり。
+
+C.xy=|B.xy|/|C.xy|*C.xy;
+Listplot([B,A,C]);
+Setcolor("red");
+Anglemark("1",[B,A,C],[3]); //size=3
+Arrowhead(1,"ag1",[2]); //position=1,size=2
+Setcolor("black");
+
+
+動くように修正したものは次のとおり。
+C.xy=|B.xy|/|C.xy|*C.xy;
+Listplot([B,A,C]);
+Setcolor("red");
+Anglemark("1",[B,A,C],[3]); //size=3
+Arrowhead(Ptend("ag1"),"ag1",[2]); //position=1,size=2
+Setcolor("black");
+
+※　修正点は，次のとおり。
+Arrowhead(1,"ag1",[2]);
+の第１引数「1」は，プロットデータ"ag1" の最後の点とする仕様だったが，変更されて，
+最後の点は，「Ptend("ag1")」で表す。
+内容的に，「ag1_length(ag1)」と「ag1_(-1)」も最後の点を表す。
+
+p.18 の例にあるような
+Arrowhead(0.6,"cr1",[2,1,0.5,"Color=red"]);
+はエラーとなるが，その内容は，
+Arrowhead(ag1_(0.6*length(ag1)),"ag1",[2]);
+で実現できる。
+もし，プロットデータ"ag1" の最初の点を使うなら，「Ptstart("ag1")」もしくは，「ag1_1」としてもよい。
+
+
+Arrowheadの第２引数は，ベクトルを与えると，そのベクトルの向きに矢印が向き，
+プロットデータ名を指定すると，プロットデータから向きが決まる。
+
+
+（２）Arrowheadには，原則として名前を指定しない。
+予約された名前と重複すると，画面には描くが，TeXプレビューに描かないという現象が起きる。
+実際には，Drwxy() で描いた座標軸の鏃が予約された名前になっていると思う。
+
+(2025/10/21)
