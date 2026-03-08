@@ -1,0 +1,41 @@
+%% \input{input4kubo260225.txt}として使う。
+\renewcommand{\slidepage}[1][\monthday]{%
+\setcounter{ketpicctra}{18}%
+\hypersetup{linkcolor=black,urlcolor=blue}%
+  \begingroup
+    \def\flga{#1}%% ローカルな一時マクロ
+    \def\flgb{m}%% 〃
+    \ifx\flga\flgb
+      \vspace*{18mm}%%
+    \fi
+  \endgroup
+\begin{layer}{130}{0}%% change by kubo
+\putnotew{131}{-\theketpicctra.05}{\small\monthday-\thepage/\pageref{pageend}}%%ページ番号
+\end{layer}\hypersetup{linkcolor=blue}
+}
+
+%% by kubo %% start %%
+\newcommand{\settingenumi}[2]{%enumirate環境の調整
+\setlength{\leftskip}{#1 mm}\setlength{\rightskip}{#2 mm}
+}
+
+
+\newcommand{\wall}[2][kabegami]{%% 
+%%  \begingroup
+%%    \def\flga{#2}%% ローカルな一時マクロ
+%%    \def\flgb{m}%% 〃
+%%    \ifx\flga\flgb
+%%      \vspace*{18mm}%%
+%%      \vspace*{0mm}%%
+%%    \fi
+%%  \endgroup
+\vspace*{-25mm}%%
+%%      \ \\[-34mm]%%
+
+  \hspace{-5mm}\scalebox{0.95}{\input{fig/#1.tex}}%%
+\vspace*{18.5mm}%%
+  }
+
+\vspace*{18mm}%%
+\wall[kabegami3]{m}
+%% by kubo %% end %%

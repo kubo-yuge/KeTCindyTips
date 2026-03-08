@@ -1,0 +1,246 @@
+title::slide0
+::\usepackage{qrcode}
+::\def\bs{\textbackslash}%記号のbackslashを使う
+::\newcommand{\monthday}{0228}%ページ番号の日付
+::\usepackage{emath,emathEy}%edaenumerate環境を使う
+
+
+\setthin{0.1}
+\def\colorthin{\color[cmyk]{\thin,\thin,\thin,\thin}}
+
+
+\setcounter{figure}{1}
+
+\input{input4kubo260228.txt}% 行の多い設定を入れた
+
+%% ここからがスライドの内容
+
+%%%%%%%%%%%%%%%%
+main::セクション(節)タイトル
+\slidepage[m]
+\wall{m}
+
+%%%%%%%%%%%%%%%%
+new::ページタイトルなど
+%repeat=1
+\slidepage
+\wall{}
+
+\enminit
+\textinit[100]
+layer::{120}{0}
+\addtext[-4]{6}{\pnp}{節タイトルのページは，次の行とする。}
+\addtext[-1]{14}{}{{\tt main:{}:}節タイトル}
+\addtext[-2]{10}{\large(注)}{\large ページ番号を表示するときは，直後に\bs{\tt slidepage[m]} を入れる。}\adde
+\addtext[5]{6}{\pnp}{新たなページは，次の2行で始める。}
+\addtext{14}{}{{\tt new:{}:}ページタイトル}
+\addtext[-2]{14}{}{{\tt repeat=}\scalebox{0.9}{(段階表示で必要な階数)}}
+\addtext{10}{\large(注)}{\large ページ番号を表示するときは，直後に\bs{\tt slidepage} を入れる。}\adde
+end
+
+
+%%%%%%%%%%%%%%%%
+main::layer環境と箇条書き
+\slidepage[m]
+\wall{m}
+
+%%%%%%%%%%%%%%%%
+new::layer環境
+%repeat=1
+\slidepage
+\wall{}
+
+\enminit
+\textinit[100]
+layer::{120}{0}
+\addtext[-4]{8}{\ten}{\sf{\bs begin\{layer\}\{120\}\{60\}〜\bs end\{layer\}}}
+\setwidth{100}
+\addtext{14}{\ten[0.5]}{横120mm,縦60mmの範囲で10mmごとに格子線を引く}
+\addtext[6]{14}{\ten[0.5]}{縦を0とすると格子を描かない}
+\addtext{14}{\ten[0.5]}{KeTSlideでは， {\tt layer:{}:\{120\}\{60\}〜end}でよい}
+\addtext[6]{8}{\ten}{layer環境自体は高さ0のpicture環境}
+\addtext{14}{\ten[0.5]}{したがって行幅をとらない}
+
+end
+
+%%%%%%%%%%%%%%%%
+new::putnote
+%repeat=1
+\slidepage
+\wall{}
+
+\enminit
+\textinit[100]%% 以下，"::"には意味があるので，":{}:"とした部分あり。
+layer::{120}{0}
+\addtext[-5]{8}{\ten}{\tt\bs putnote(s,se,...)\{8\}\{6\}\{{\gt 要素}\}}
+\addtext{14}{\ten[0.5]}{8,6を基準点として(s,se,...)方向に要素をおく}
+\addtext{14}{\ten[0.5]}{KeTSlideでは以下のように書いてもよい}
+\addtext{26}{}{\tt putnote:{}:(s,se,...)\{8\}\{6\}\{{\gt 要素}\}}
+\addtext{14}{\ten[0.5]}{figフォルダに\TeX の描画コードファイル(例えばfigure.tex)を置いたときは以下のように書いてもよい(0.6は縮小率)}
+\addtext[12]{26}{}{\tt putnote:{}:se\{5\}\{6\}:{}:figure,0.6}
+end
+
+%%%%%%%%%%%%%%%
+new::箇条書き(1)
+%repeat=1
+\slidepage
+\wall{}
+
+\enminit
+\textinit[108]
+layer::{120}{0}
+\addtext[-4]{6}{\ten}{layer環境の中で{\tt\bs addtext}を用いて，項目を順に置いていく}
+\addtext[6]{6}{\ten}{箇条書きのラベルとして，{\tt\bs ten}を用意した}
+\addtext[-1]{10}{\ten[0.5]}{{\tt\bs ten[s]}は{\tt\$\bs bullet\$} のs倍(デフォルトは0.9)}
+\addtext{6}{\ten}{番号付きラベルとして，{\tt\bs pnp}を用意した}
+\addtext{10}{\ten[0.5]}{番号は，enmカウンタで制御}
+\addtext{10}{\pnp}{最初に{\tt\bs enminit}(={\tt\bs setcounter\{enm\}\{1\}})}\adde
+\addtext{10}{\pnp}{{\tt\bs adde} によりカウンタを一つ進める}
+end
+
+
+%%%%%%%%%%%%%%%
+new::箇条書き(2)
+%repeat=1
+\slidepage
+\wall{}
+
+\enminit
+\textinit[108]
+layer::{120}{0}
+\addtext[-4]{8}{\ten}{{\tt\bs addtext}を次のように使う}
+\addtext[1]{16}{}{\tt\bs enminit}
+\addtext[-2]{16}{}{\tt\bs textinit[108]}
+\addtext[-2]{26}{\%}{\scalebox{.9}{初期位置設定:横幅(default100)を決める}}
+\addtext[-1]{16}{}{\tt layer:{}:\{120\}\{0\}}
+\addtext[-2]{22}{}{\tt\bs addtext\{8\}\{\bs pnp\}\{{\gt テキスト}1\}{\tt\bs adde}}
+\addtext[-1]{26}{\%}{\scalebox{.9}{書き出しの水平位置 左から8mm}}
+\addtext[-1]{22}{}{\tt\bs addtext\{8\}\{\bs pnp\}\{{\gt テキスト}2\}}
+\addtext[-1]{16}{}{\tt end}
+end
+
+
+%%%%%%%%%%%%%%%
+new::箇条書き(3)
+%repeat=1
+\slidepage
+\wall{}
+
+\enminit
+\textinit[105]
+layer::{120}{0}
+\addtext[-2]{8}{\ten}{{\tt\bs addtext}のオプション}
+\addtext{16}{\ten[0.5]}{前の行が複数行の時などに用いる}
+\addtext{16}{\ten[0.5]}{\tt\bs addtext[6]\{8\}\{\bs ten\}\{\gt 文または図\}}
+\addtext[-1]{24}{\%}{\large オプション引数[6]を指定することで，通常\\ 8mmの改行幅を8+6=14mmとできる}
+\addtext[6]{8}{\ten}{テキストに{\tt\bs verb}は使えない}
+
+end
+
+%%%%%%%%%%%%%%%%
+main::段階的表示
+\slidepage[m]
+\wall{}
+
+%%%%%%%%%%%%
+new::段階的表示の方法
+%repeat=6,para
+\slidepage
+\wall{}
+
+\enminit
+\def\bed{\theenm.}
+\textinit[105]
+layer::{130}{0}
+\addtext[-3]{8}{\bed}{{\tt\%repeat=}に必要な段階数を入れる}\adde
+%[1,-]::\addtext{16}{}{\tt\%repeat=5}
+%[1,-]::\addtext[-2]{16}{}{{\tt\%repeat=5,para} \%\% コントローラーを表示}
+{\color{red}
+%[1,2]::\hjaggyline[32]{68}{26}{34}
+%[1,2]::\arrowlineseg[32]{112}{65}{40}{115}\arrowhead[2.6]{112}{65}{115}
+}%%
+%thin[2,-]::\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1]:{}:}要素}1段のみ}\adde
+%thin[3,-]::\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2,-]:{}:}要素}2段以降}\adde
+%thin[4,-]::\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[-,2]:{}:}要素}2段まで}\adde
+%[5,-]::\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2..4]:{}:}要素}2段から4段まで}\adde
+%[6,-]::\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1..3,5 ]:{}:}要素}1段から3段までと5段}\adde
+end
+
+
+%%%%%%%%%%%%
+new::区分求積法と定積分(段階的表示の例)
+%repeat=4,para
+\slidepage
+\wall{}
+
+\textinit[120]
+\enminit
+layer::{120}{0}
+\addtext{6}{\pnp}{$\displaystyle\int_a^b f(x)\,dx=\lim_{\varDelta x_k \to 0}\sum_{k}f(x_k)\varDelta x_k$}\adde
+%[2]::putnote::se{75}{25}::kubunkyuuseki8,1.0
+%[3,-]::\setwidth{60}
+%[3,-]::\addtext[8]{6}{\pnp}{$f(x)\varDelta x$を合計して極限をとればよい}\adde
+%[4,-]::\addtext[8]{6}{\pnp}{面積でなくてもよい}\adde
+%[3,-]::putnote::se{75}{25}::kubunkyuuseki8b,1.0
+end
+
+
+%%%%%%%%%%%%%%%%
+new::itemizeとenumerate環境の使い方
+%repeat=1
+\slidepage
+\wall{}
+
+\textinit[108]
+layer::{120}{0}
+\addtext{4}{\ten}{段階的表示では，後ろの行の位置がずれることがある}
+\addtext[8]{4}{\ten}{\tt itemize〜end}
+\addtext{14}{}{\tt itemize}
+\addtext{14}{}{\tt item:{}:\gt 内容}
+\addtext{14}{}{\tt item:{}:\gt 結論}
+\addtext{14}{}{\tt end}
+
+\textinit[108]
+\addtext{75}{}{}
+\addtext[8]{67}{\ten}{\tt enumerate:{}:[ ]〜end}
+\addtext{75}{}{\tt enumerate:{}:[(1)]}
+\addtext{75}{}{\tt item:{}:\gt 内容}
+\addtext{75}{}{\tt item:{}:\gt 結論}
+\addtext{75}{}{\tt end}
+end
+
+
+%%%%%%%%%%%%%%%%
+new::enumerateのサンプル
+%repeat=1
+\slidepage
+\wall{}
+
+\textinit[108]
+layer::{140}{0}
+end
+
+\vspace*{2.5mm}
+
+enumerate::[(1)]
+\settingenumi{1}{1}%% enumerate左右を設定
+item::[\ten] enumerate の箇条書きは，TeXのコマンド \verb|\verb| が使える。
+item::[\ten] 改行幅の調整は，通常のTeXの使い方と同じ。
+item::[\ten] この箇条書きは，左端から14mm，右端から10mmに文章が収まるよう，
+\verb|\leftskip|と，\verb|\rightskip|を指定した。
+end
+
+%%%%%%%%%%%%%%%%
+new::その他の機能
+%repeat=1
+\slidepage
+\wall{}
+
+\textinit[107]
+layer::{120}{0}
+\addtext{4}{\ten}{空白行を挿入するには，``...''の行を使う。}
+\addtext{4}{\ten}{コメントアウトは``\%\%''（\% を2つ以上）}
+\addtext{4}{\ten}{\fbox{\sf Digest} ボタンで段階表示をまとめたダイジェスト版pdfを作るためのtexソースを得ます。それをコンパイルすればダイジェスト版ができます。}
+end
+
+

@@ -1,0 +1,659 @@
+%%% title testslide260228
+\documentclass{article}
+\usepackage{geometry}
+\geometry{paperwidth=148mm,paperheight=105mm}
+\usepackage{luatexja}
+\usepackage{pict2e}
+\usepackage{ketpic2e,ketlayer2e}
+\usepackage{ketslide}
+\usepackage{amsmath,amssymb}
+\usepackage{bm,enumerate}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[colorlinks=true,linkcolor=blue,filecolor=blue]{hyperref}
+
+\usepackage{ketslide}
+
+\usepackage{qrcode}
+\def\bs{\textbackslash}%記号のbackslashを使う
+\newcommand{\monthday}{0228}%ページ番号の日付
+\usepackage{emath,emathEy}%edaenumerate環境を使う
+
+\definecolor{slidecolora}{cmyk}{0.98,0.13,0,0.43}
+\definecolor{slidecolorb}{cmyk}{0.2,0,0,0}
+\definecolor{slidecolorc}{cmyk}{0.2,0,0,0}
+\definecolor{slidecolord}{cmyk}{0.2,0,0,0}
+\definecolor{slidecolore}{cmyk}{0,0,0,0.5}
+\definecolor{slidecolorf}{cmyk}{0,0,0,0.5}
+\definecolor{slidecolori}{cmyk}{0.98,0.13,0,0.43}
+\def\setthin#1{\def\thin{#1}}
+\setthin{0}
+\newcounter{pagectr}
+\setcounter{pagectr}{1}
+
+\ketslideinit
+
+\setmargin{9}{9}{3}{-17}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{layer}{120}{0}
+\putnotese{0}{0}{\input{fig/slide0.tex}}
+\end{layer}
+
+\def\mainslidetitley{22}
+\def\ketcletter{slidecolora}
+\def\ketcbox{slidecolorb}
+\def\ketdbox{slidecolorc}
+\def\ketcframe{slidecolord}
+\def\ketcshadow{slidecolore}
+\def\ketdshadow{slidecolorf}
+\def\slidetitlex{6}
+\def\slidetitlesize{1.3}
+\def\mketcletter{slidecolori}
+\def\mketcbox{yellow}
+\def\mketdbox{yellow}
+\def\mketcframe{yellow}
+\def\mslidetitlex{62}
+\def\mslidetitlesize{2}
+
+\color{black}
+\Large\bf\boldmath
+\addtocounter{page}{-1}
+
+\setthin{0.1}
+\def\colorthin{\color[cmyk]{\thin,\thin,\thin,\thin}}
+\setcounter{figure}{1}
+\input{input4kubo260228.txt}% 行の多い設定を入れた
+%% ここからがスライドの内容
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\mainslide{セクション(節)タイトル}
+
+
+\slidepage[m]
+\wall{m}
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{ページタイトルなど}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\enminit
+\textinit[100]
+
+\begin{layer}{120}{0}
+\addtext[-4]{6}{\pnp}{節タイトルのページは，次の行とする。}
+\addtext[-1]{14}{}{{\tt main:{}:}節タイトル}
+\addtext[-2]{10}{\large(注)}{\large ページ番号を表示するときは，直後に\bs{\tt slidepage[m]} を入れる。}\adde
+\addtext[5]{6}{\pnp}{新たなページは，次の2行で始める。}
+\addtext{14}{}{{\tt new:{}:}ページタイトル}
+\addtext[-2]{14}{}{{\tt repeat=}\scalebox{0.9}{(段階表示で必要な階数)}}
+\addtext{10}{\large(注)}{\large ページ番号を表示するときは，直後に\bs{\tt slidepage} を入れる。}\adde
+\end{layer}
+
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\mainslide{layer環境と箇条書き}
+
+
+\slidepage[m]
+\wall{m}
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{layer環境}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\enminit
+\textinit[100]
+
+\begin{layer}{120}{0}
+\addtext[-4]{8}{\ten}{\sf{\bs begin\{layer\}\{120\}\{60\}〜\bs end\{layer\}}}
+\setwidth{100}
+\addtext{14}{\ten[0.5]}{横120mm,縦60mmの範囲で10mmごとに格子線を引く}
+\addtext[6]{14}{\ten[0.5]}{縦を0とすると格子を描かない}
+\addtext{14}{\ten[0.5]}{KeTSlideでは， {\tt layer:{}:\{120\}\{60\}〜end}でよい}
+\addtext[6]{8}{\ten}{layer環境自体は高さ0のpicture環境}
+\addtext{14}{\ten[0.5]}{したがって行幅をとらない}
+\end{layer}
+
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{putnote}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\enminit
+\textinit[100]%% 以下，"
+
+\begin{layer}{120}{0}
+\addtext[-5]{8}{\ten}{\tt\bs putnote(s,se,...)\{8\}\{6\}\{{\gt 要素}\}}
+\addtext{14}{\ten[0.5]}{8,6を基準点として(s,se,...)方向に要素をおく}
+\addtext{14}{\ten[0.5]}{KeTSlideでは以下のように書いてもよい}
+\addtext{26}{}{\tt putnote:{}:(s,se,...)\{8\}\{6\}\{{\gt 要素}\}}
+\addtext{14}{\ten[0.5]}{figフォルダに\TeX の描画コードファイル(例えばfigure.tex)を置いたときは以下のように書いてもよい(0.6は縮小率)}
+\addtext[12]{26}{}{\tt putnote:{}:se\{5\}\{6\}:{}:figure,0.6}
+\end{layer}
+
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{箇条書き(1)}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\enminit
+\textinit[108]
+
+\begin{layer}{120}{0}
+\addtext[-4]{6}{\ten}{layer環境の中で{\tt\bs addtext}を用いて，項目を順に置いていく}
+\addtext[6]{6}{\ten}{箇条書きのラベルとして，{\tt\bs ten}を用意した}
+\addtext[-1]{10}{\ten[0.5]}{{\tt\bs ten[s]}は{\tt\$\bs bullet\$} のs倍(デフォルトは0.9)}
+\addtext{6}{\ten}{番号付きラベルとして，{\tt\bs pnp}を用意した}
+\addtext{10}{\ten[0.5]}{番号は，enmカウンタで制御}
+\addtext{10}{\pnp}{最初に{\tt\bs enminit}(={\tt\bs setcounter\{enm\}\{1\}})}\adde
+\addtext{10}{\pnp}{{\tt\bs adde} によりカウンタを一つ進める}
+\end{layer}
+
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{箇条書き(2)}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\enminit
+\textinit[108]
+
+\begin{layer}{120}{0}
+\addtext[-4]{8}{\ten}{{\tt\bs addtext}を次のように使う}
+\addtext[1]{16}{}{\tt\bs enminit}
+\addtext[-2]{16}{}{\tt\bs textinit[108]}
+\addtext[-2]{26}{\%}{\scalebox{.9}{初期位置設定:横幅(default100)を決める}}
+\addtext[-1]{16}{}{\tt layer:{}:\{120\}\{0\}}
+\addtext[-2]{22}{}{\tt\bs addtext\{8\}\{\bs pnp\}\{{\gt テキスト}1\}{\tt\bs adde}}
+\addtext[-1]{26}{\%}{\scalebox{.9}{書き出しの水平位置 左から8mm}}
+\addtext[-1]{22}{}{\tt\bs addtext\{8\}\{\bs pnp\}\{{\gt テキスト}2\}}
+\addtext[-1]{16}{}{\tt end}
+\end{layer}
+
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{箇条書き(3)}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\enminit
+\textinit[105]
+
+\begin{layer}{120}{0}
+\addtext[-2]{8}{\ten}{{\tt\bs addtext}のオプション}
+\addtext{16}{\ten[0.5]}{前の行が複数行の時などに用いる}
+\addtext{16}{\ten[0.5]}{\tt\bs addtext[6]\{8\}\{\bs ten\}\{\gt 文または図\}}
+\addtext[-1]{24}{\%}{\large オプション引数[6]を指定することで，通常\\ 8mmの改行幅を8+6=14mmとできる}
+\addtext[6]{8}{\ten}{テキストに{\tt\bs verb}は使えない}
+\end{layer}
+
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\mainslide{段階的表示}
+
+
+\slidepage[m]
+\wall{}
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newslide{段階的表示の方法}
+
+\vspace*{18mm}
+
+\hypertarget{para1pg1}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para0pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para1pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para0pg1}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para1pg2}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 1/6}
+\end{layer}
+
+\slidepage
+\wall{}
+\enminit
+\def\bed{\theenm.}
+\textinit[105]
+
+\begin{layer}{130}{0}
+\addtext[-3]{8}{\bed}{{\tt\%repeat=}に必要な段階数を入れる}\adde
+\addtext{16}{}{\tt\%repeat=5}
+\addtext[-2]{16}{}{{\tt\%repeat=5,para} \%\% コントローラーを表示}
+{\color{red}
+\hjaggyline[32]{68}{26}{34}
+\arrowlineseg[32]{112}{65}{40}{115}\arrowhead[2.6]{112}{65}{115}
+}%%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1]:{}:}要素}1段のみ}\adde
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2,-]:{}:}要素}2段以降}\adde
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[-,2]:{}:}要素}2段まで}\adde
+}%
+\end{layer}
+
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\hypertarget{para1pg2}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para0pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para1pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para1pg1}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para1pg3}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 2/6}
+\end{layer}
+
+\slidepage
+\wall{}
+\enminit
+\def\bed{\theenm.}
+\textinit[105]
+
+\begin{layer}{130}{0}
+\addtext[-3]{8}{\bed}{{\tt\%repeat=}に必要な段階数を入れる}\adde
+\addtext{16}{}{\tt\%repeat=5}
+\addtext[-2]{16}{}{{\tt\%repeat=5,para} \%\% コントローラーを表示}
+{\color{red}
+\hjaggyline[32]{68}{26}{34}
+\arrowlineseg[32]{112}{65}{40}{115}\arrowhead[2.6]{112}{65}{115}
+}%%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1]:{}:}要素}1段のみ}\adde
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2,-]:{}:}要素}2段以降}\adde
+}%
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[-,2]:{}:}要素}2段まで}\adde
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\hypertarget{para1pg3}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para0pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para1pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para1pg2}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para1pg4}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 3/6}
+\end{layer}
+
+\slidepage
+\wall{}
+\enminit
+\def\bed{\theenm.}
+\textinit[105]
+
+\begin{layer}{130}{0}
+\addtext[-3]{8}{\bed}{{\tt\%repeat=}に必要な段階数を入れる}\adde
+\addtext{16}{}{\tt\%repeat=5}
+\addtext[-2]{16}{}{{\tt\%repeat=5,para} \%\% コントローラーを表示}
+{\color{red}
+}%%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1]:{}:}要素}1段のみ}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2,-]:{}:}要素}2段以降}\adde
+{\color[cmyk]{\thin,\thin,\thin,\thin}%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[-,2]:{}:}要素}2段まで}\adde
+}%
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\hypertarget{para1pg4}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para0pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para1pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para1pg3}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para1pg5}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 4/6}
+\end{layer}
+
+\slidepage
+\wall{}
+\enminit
+\def\bed{\theenm.}
+\textinit[105]
+
+\begin{layer}{130}{0}
+\addtext[-3]{8}{\bed}{{\tt\%repeat=}に必要な段階数を入れる}\adde
+\addtext{16}{}{\tt\%repeat=5}
+\addtext[-2]{16}{}{{\tt\%repeat=5,para} \%\% コントローラーを表示}
+{\color{red}
+}%%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1]:{}:}要素}1段のみ}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2,-]:{}:}要素}2段以降}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[-,2]:{}:}要素}2段まで}\adde
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\hypertarget{para1pg5}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para0pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para1pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para1pg4}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 5/6}
+\end{layer}
+
+\slidepage
+\wall{}
+\enminit
+\def\bed{\theenm.}
+\textinit[105]
+
+\begin{layer}{130}{0}
+\addtext[-3]{8}{\bed}{{\tt\%repeat=}に必要な段階数を入れる}\adde
+\addtext{16}{}{\tt\%repeat=5}
+\addtext[-2]{16}{}{{\tt\%repeat=5,para} \%\% コントローラーを表示}
+{\color{red}
+}%%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1]:{}:}要素}1段のみ}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2,-]:{}:}要素}2段以降}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[-,2]:{}:}要素}2段まで}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2..4]:{}:}要素}2段から4段まで}\adde
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\hypertarget{para1pg6}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para0pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para1pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para1pg5}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 6/6}
+\end{layer}
+
+\slidepage
+\wall{}
+\enminit
+\def\bed{\theenm.}
+\textinit[105]
+
+\begin{layer}{130}{0}
+\addtext[-3]{8}{\bed}{{\tt\%repeat=}に必要な段階数を入れる}\adde
+\addtext{16}{}{\tt\%repeat=5}
+\addtext[-2]{16}{}{{\tt\%repeat=5,para} \%\% コントローラーを表示}
+{\color{red}
+}%%
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1]:{}:}要素}1段のみ}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2,-]:{}:}要素}2段以降}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[-,2]:{}:}要素}2段まで}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[2..4]:{}:}要素}2段から4段まで}\adde
+\addtext{8}{\bed}{\Ltab{50mm}{{\tt\%[1..3,5 ]:{}:}要素}1段から3段までと5段}\adde
+\end{layer}
+
+
+\newslide{区分求積法と定積分(段階的表示の例)}
+
+\vspace*{18mm}
+
+\hypertarget{para2pg1}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para2pg2}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para2pg4}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para3pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 1/4}
+\end{layer}
+
+\slidepage
+\wall{}
+\textinit[120]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{6}{\pnp}{$\displaystyle\int_a^b f(x)\,dx=\lim_{\varDelta x_k \to 0}\sum_{k}f(x_k)\varDelta x_k$}\adde
+\end{layer}
+
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\hypertarget{para2pg2}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para2pg3}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para2pg4}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para3pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 2/4}
+\end{layer}
+
+\slidepage
+\wall{}
+\textinit[120]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{6}{\pnp}{$\displaystyle\int_a^b f(x)\,dx=\lim_{\varDelta x_k \to 0}\sum_{k}f(x_k)\varDelta x_k$}\adde
+\putnotese{75}{25}{\scalebox{1.0}{\input{fig/kubunkyuuseki8.tex}}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\hypertarget{para2pg3}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para2pg2}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para2pg4}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para2pg4}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para3pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 3/4}
+\end{layer}
+
+\slidepage
+\wall{}
+\textinit[120]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{6}{\pnp}{$\displaystyle\int_a^b f(x)\,dx=\lim_{\varDelta x_k \to 0}\sum_{k}f(x_k)\varDelta x_k$}\adde
+\setwidth{60}
+\addtext[8]{6}{\pnp}{$f(x)\varDelta x$を合計して極限をとればよい}\adde
+\putnotese{75}{25}{\scalebox{1.0}{\input{fig/kubunkyuuseki8b.tex}}}
+\end{layer}
+
+
+\sameslide
+
+\vspace*{18mm}
+
+\hypertarget{para2pg4}{}
+
+\begin{layer}{120}{0}
+\putnotew{96}{70}{\hyperlink{para1pg6}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut||\!\lhd$}}}}}
+\putnotew{101}{70}{\hyperlink{para2pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut|\!\lhd$}}}}}
+\putnotew{108}{70}{\hyperlink{para2pg3}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\!\lhd\!\!$}}}}}
+\putnotew{115}{70}{\hyperlink{para2pg4}{\fbox{\Ctab{4.5mm}{\scalebox{1}{\scriptsize $\mathstrut\!\rhd\!$}}}}}
+\putnotew{120}{70}{\hyperlink{para2pg4}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!|$}}}}}
+\putnotew{125}{70}{\hyperlink{para3pg1}{\fbox{\Ctab{2.5mm}{\scalebox{1}{\scriptsize $\mathstrut \!\rhd\!\!||$}}}}}
+\putnotee{126}{70}{\scriptsize\color{blue} 4/4}
+\end{layer}
+
+\slidepage
+\wall{}
+\textinit[120]
+\enminit
+
+\begin{layer}{120}{0}
+\addtext{6}{\pnp}{$\displaystyle\int_a^b f(x)\,dx=\lim_{\varDelta x_k \to 0}\sum_{k}f(x_k)\varDelta x_k$}\adde
+\setwidth{60}
+\addtext[8]{6}{\pnp}{$f(x)\varDelta x$を合計して極限をとればよい}\adde
+\addtext[8]{6}{\pnp}{面積でなくてもよい}\adde
+\putnotese{75}{25}{\scalebox{1.0}{\input{fig/kubunkyuuseki8b.tex}}}
+\end{layer}
+
+
+\newslide{itemizeとenumerate環境の使い方}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\textinit[108]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{段階的表示では，後ろの行の位置がずれることがある}
+\addtext[8]{4}{\ten}{\tt itemize〜end}
+\addtext{14}{}{\tt itemize}
+\addtext{14}{}{\tt item:{}:\gt 内容}
+\addtext{14}{}{\tt item:{}:\gt 結論}
+\addtext{14}{}{\tt end}
+\textinit[108]
+\addtext{75}{}{}
+\addtext[8]{67}{\ten}{\tt enumerate:{}:[ ]〜end}
+\addtext{75}{}{\tt enumerate:{}:[(1)]}
+\addtext{75}{}{\tt item:{}:\gt 内容}
+\addtext{75}{}{\tt item:{}:\gt 結論}
+\addtext{75}{}{\tt end}
+\end{layer}
+
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{enumerateのサンプル}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\textinit[108]
+
+\begin{layer}{140}{0}
+\end{layer}
+
+\vspace*{2.5mm}
+\begin{enumerate}[(1)]
+\settingenumi{1}{1}%% enumerate左右を設定
+\item
+[\ten] enumerate の箇条書きは，TeXのコマンド \verb|\verb| が使える。
+\item
+[\ten] 改行幅の調整は，通常のTeXの使い方と同じ。
+\item
+[\ten] この箇条書きは，左端から14mm，右端から10mmに文章が収まるよう，
+\verb|\leftskip|と，\verb|\rightskip|を指定した。
+\end{enumerate}
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+\newslide{その他の機能}
+
+\vspace*{18mm}
+
+\slidepage
+\wall{}
+\textinit[107]
+
+\begin{layer}{120}{0}
+\addtext{4}{\ten}{空白行を挿入するには，``...''の行を使う。}
+\addtext{4}{\ten}{コメントアウトは``\%\%''（\% を2つ以上）}
+\addtext{4}{\ten}{\fbox{\sf Digest} ボタンで段階表示をまとめたダイジェスト版pdfを作るためのtexソースを得ます。それをコンパイルすればダイジェスト版ができます。}
+\end{layer}
+
+\label{pageend}\mbox{}
+
+\end{document}
