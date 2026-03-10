@@ -6,3 +6,13 @@ Setwindow([x0,x1],[y0,y1]);
 により，SWの座標を[x0,y0]，NEの座標を[x1,y1]に
 調整して，必要な図や表を囲むようにします。
 なお，描画領域に入ってなくても文字は出力されます。
+
+(2025/7/27)
+
+
+
+Lualatexでコンパイルすると，過去にKeTCindyで作成した図が表示されないことがある。
+KeTCindyの設定がplatexで，図のパッケージがtpicのときに作成したtexデータは，lualatexコンパイルで，表示されないことがわかった。
+その場合は，図のパッケージをpict2eか，tikzに設定したKeTCindyで，図を作ったときのcdyファイルを起動し，figureボタンを押せば，laulatexコンパイルでも表示されるtexデータが得られる。
+ketcindysettings.cdyでの設定時にTeXをlualatexにすると，Graphicパッケージをpict2e以外のものを選んでも図を作成してできるmainファイル(tex)のソースでは，pict2eを呼びでしている。
+(2026/3/10)
