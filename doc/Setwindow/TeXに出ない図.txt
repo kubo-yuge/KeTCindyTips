@@ -12,7 +12,12 @@ Setwindow([x0,x1],[y0,y1]);
 
 
 Lualatexでコンパイルすると，過去にKeTCindyで作成した図が表示されないことがある。
-KeTCindyの設定がplatexで，図のパッケージがtpicのときに作成したtexデータは，lualatexコンパイルで，表示されないことがわかった。
-その場合は，図のパッケージをpict2eか，tikzに設定したKeTCindyで，図を作ったときのcdyファイルを起動し，figureボタンを押せば，laulatexコンパイルでも表示されるtexデータが得られる。
-ketcindysettings.cdyでの設定時にTeXをlualatexにすると，Graphicパッケージをpict2e以外のものを選んでも図を作成してできるmainファイル(tex)のソースでは，pict2eを呼びでしている。
+KeTCindyの設定がplatexで，図のパッケージがtpicのときに作成したtexデータは，
+lualatexコンパイルで，表示されないことがわかった。
+その場合は，図のパッケージをpict2eか，tikzに設定したKeTCindyで，
+図を作ったときのcdyファイルを起動し，figureボタンを押せば，
+laulatexコンパイルでも表示されるtexデータが得られる。
+ketcindysettings.cdyでの設定時にTeXをlualatexにすると，
+Graphicパッケージをpict2e以外のものを選んでも
+図を作成してできるmainファイル(tex)のソースでは，pict2eを呼び出している。
 (2026/3/10)
