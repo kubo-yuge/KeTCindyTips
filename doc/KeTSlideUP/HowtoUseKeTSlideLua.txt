@@ -1,1 +1,79 @@
-KeTSlideLuaの更新をお待ちください。
+2026年8月19日にKeTCindyが更新されました（version 4.5.56）
+配布されるKeTSlideは，lualatex対応です。
+
+ketslide によるプレゼンテーション作成（2020.05.31）
+
+0. スライド作成の流れ
+  1) `ketsample/s07slide` 内の `s0701basic.cdy` を作業ディレクトリにコピーし、名前を変更します。
+    例) `s0701basic.cdy` , `s0701basic.txt`
+    注) 両方のファイルの名前を変更してください。
+  ここでは、ファイル名を `sample.cdy` と `sample.txt` とします。
+  2) `sample.cdy` をダブルクリックし、`Settitle` を編集します。
+  3) 画面上部の歯車マークを押します。
+  4) 画面上の "Title" ボタンを押します。
+  5) "Slide" ボタンを押します。
+
+1. .txt ファイルの編集
+  1) 各コマンドの区切りには `::` を使用します。
+  2) コマンド
+        title::titleslidename(::wallpaper)
+          注) 1行目に記述します。
+        main::mainttitlename
+        new::pagetitlename
+        enumerate
+          =\begin{enumerate}
+        itemize
+          =\begin{itemize}
+        layer::{xsize}{ysize}
+          =\begin{layer}{xsize}{ysize}
+        item::sentence
+          =\item sentence
+        putnote::dir{xpos}{ypos}::filename(,scale)
+          =putnotedir{xpos}{ypos}{\input{fig/filename}}
+        end
+          =\end{itemize,enumerate,layer}
+     注) その他、任意の TeX コマンドが使用可能です。
+  3) 空白行を挿入するには `...` を使用します。
+  4) ページを段階的に表示する場合
+        `new` の直後に以下を記述します。
+            %repeat=ステップ数`
+        各行の先頭に以下のように記述します。
+            %[2,-]::sentence`
+                ステップ2以降のすべてのステップで表示
+            %[-,2]::sentence`
+                ステップ2までのすべてのステップで表示
+            %[1..3,5]::sentence`
+                ステップ1, 2, 3, 5で表示
+        薄い文字で表示するには `%thin` を使用します。
+            %thin::[2,-]::sentence`
+            注) 文字の濃度（薄さ）は `Setslidebody` で変更可能です。
+  5) "fig" フォルダ内のサブフォルダにあるすべての図を表示する場合
+        %repeat=
+        %para=subfig:{0}:s{60}{10}:input(:scale)
+  6) ページ番号を表示する場合
+        main の場合: `\slidepage[m]`
+        slide の場合: `\slidepage`（`%repeat` の行の後）
+      注) 総ページ数を取得するには TeX で2回コンパイルしてください。
+
+2. cdy ファイル内に記述する設定コマンド
+        Setslidemain([letterc,boxc,boxd,framec,xpos,size]);
+        Setslidepage([letterc,boxc,boxd,framec,shadowc,shadowd,xpos,size]);
+        Setslidebody(bodycolor,bodystyle,density);
+        Setslidehyper("dvipdfmx",["cl=true,lc=blue,fc=blue",90,70,1]);
+3. パラパラアニメーション（Flip animation）の作成
+  1) `s` における状態 `Mf(s)` を定義します。
+  2) 以下のように `Setpara` を追加します。
+        Setpara(foldername,funcitonstr,range,options);
+            options=["m/r", "Div=25"];
+  3) "Flip" ボタンを押します。
+  4) .txt ファイルに 1. 5) のように記述します。
+  5) "Slide" ボタンを押します。
+
+4. アニメーションの作成
+  1) .cdy ファイルに以下を追加します。
+        Addpackage(["[dvipdfmx]{animate}"]);
+  2) `Setpara` のオプションに以下を追加します。
+        "Frate=num of frame in the second, "Scale=scale, "OpA=optin of animation"
+  3) `mf(s)` を定義し、"Anime" ボタンを押します。
+  4) `layer` ではなく `\input` を使用します。
+
