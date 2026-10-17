@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>入力窓(Editable Text)</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    max-width: 900px; margin: 2rem auto; padding: 0 1.2rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,
+      "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.75;
+  }
+  h1 { font-size: 1.8rem; border-bottom: 2px solid #888; padding-bottom: .35rem; }
+  h2 { font-size: 1.25rem; margin-top: 1.8rem; }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  code { padding: .12em .3em; border-radius: 4px; background: rgba(127,127,127,.15); }
+  pre { padding: 1rem; overflow-x: auto; border: 1px solid #8888; border-radius: 8px; }
+  li { margin: .35rem 0; }
+  .note { border-left: 4px solid #888; padding: .5rem 1rem; margin: 1rem 0; }
+  .downloads li { margin: .7rem 0; }
+  a { overflow-wrap: anywhere; }
+  small { opacity: .85; }
+</style>
+</head>
+<body>
+<main>
+  <h1>入力窓(Editable Text)</h1>
+
+  <p>
+    Cinderella／KeTCindyで使う入力窓（Editable Text）の作成方法と、
+    KeTJSで入力内容を取得・変更する関数をまとめています。
+  </p>
+
+  <h2>1. Editable Text の作成法</h2>
+  <ol>
+    <li>Cinderella のメニューで <strong>「モード」→「特別」→「文字列入力」</strong> を選びます。</li>
+    <li>作成された入力窓に、初期文字列を入力します。</li>
+    <li>「要素を動かす」モードに戻します。</li>
+    <li>入力窓を <strong>Shift キーを押しながらクリック</strong>し、インスペクタで識別番号を確認します。</li>
+    <li>必要に応じて KeTCindy の <code>Seteditable</code> で表示文字列・文字サイズ・幅を設定します。</li>
+  </ol>
+  <pre><code>Seteditable(12, ["y=", "Size=18", "Width=200"]);</code></pre>
+  <p>
+    上の例は、識別番号12の入力窓について、表示文字列を <code>y=</code>、
+    文字サイズを18、幅を200に設定する例です。
+    数値の単位や細かな挙動は、使用中のKeTCindy/Cinderellaの版で確認してください。
+  </p>
+
+  <h2>2. 入力窓の位置</h2>
+  <p>
+    識別番号が12の入力窓は、Cindyscriptで <code>Text12.xy</code> を使って位置を指定できます。
+    例えば、座標を明示する場合は次のように書きます。
+  </p>
+  <pre><code>Text12.xy = [2, -3];</code></pre>
+  <p>
+    <code>[2, -3]</code> は座標の例です。実際に置きたい位置に合わせて値を変更してください。
+    入力窓の作成時に付いた識別番号と、スクリプト中の <code>Text12</code> の番号を一致させます。
+  </p>
+
+  <h2>3. Textedit と Subsedit</h2>
+  <h3><code>Textedit(番号, デフォルト値)</code> — 入力内容を取得</h3>
+  <p>
+    入力窓に入力された文字列を取得します。入力文字列に <code>=</code> が含まれる場合は、
+    原則として <code>=</code> の右側が返されます。入力が空の場合は、第2引数のデフォルト値が返されます。
+  </p>
+  <pre><code>str = Textedit(12, "x^2");</code></pre>
+  <p>この例では、入力が空なら <code>str</code> に <code>x^2</code> が入ります。</p>
+
+  <h3><code>Subsedit(番号, 文字列)</code> — 入力窓の内容を変更</h3>
+  <p>
+    指定した入力窓に文字列を設定します。入力内容をプログラムから初期化したり、
+    計算結果などを窓に表示したりするときに使います。
+  </p>
+  <pre><code>Subsedit(12, "x^2");</code></pre>
+
+  <div class="note">
+    <strong>違い：</strong>
+    <code>Textedit</code> は入力窓から文字列を<strong>読み取る</strong>関数、
+    <code>Subsedit</code> は入力窓へ文字列を<strong>書き込む</strong>関数です。
+    どちらも入力窓の識別番号を指定します。
+  </div>
+
+  <div class="note">
+    <strong>注意：</strong>
+    入力窓を利用するときは、Cinderellaの画面上ではうまく動作しないことがあります。
+    作成したKeTCindyJSのHTMLファイルを開き、その画面で動作を確認してください。
+  </div>
+
+  <h2>4. サンプルファイル</h2>
+  <p>
+    下のリンクを右クリックして「リンク先のファイルを別名で保存」などを選ぶと、
+    各ファイルを個別にダウンロードできます。htmlファイルは，クリックで開きます。
+  </p>
+  <ul class="downloads">
+    <li><a href="s0511input_TH_FI%2B.cdy" download="s0511input_TH_FI+.cdy" onclick="alert('右クリックでダウンロードできます。'); return false;">s0511input_TH_FI+.cdy</a></li>
+    <li><a href="s0511input_TH_FI%2Bjson.html" download="s0511input_TH_FI+json.html">s0511input_TH_FI+json.html</a></li>
+    <li><a href="s0511TH_FI_input%2B.cdy" download="s0511TH_FI_input+.cdy" onclick="alert('右クリックでダウンロードできます。'); return false;">s0511TH_FI_input+.cdy</a></li>
+  </ul>
+
+</main>
+</body>
+</html>
