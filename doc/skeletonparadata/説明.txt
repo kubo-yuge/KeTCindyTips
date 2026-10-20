@@ -1,0 +1,29 @@
+KeTCindyには，３種類の陰線処理（下の3つの関数）がある。
+曲線（直線を含む）による曲線の陰線処理（スケルトン処理），
+曲面による曲線の陰線処理，曲面による曲面の陰線処理の３つである。
+
+
+関数 Skeletonparadata(name,PD リスト,PD リスト,option)
+機能 陰線処理（スケルトン処理）をおこなう
+説明 描画されている線と軸について陰線処理をおこなう。
+
+
+関数 Nohiddenbyfaces(name,PD1,PD2,option1,option2)
+機能 面に対し曲線を陰線処理する
+説明 PD2 で与えられた面に対し，曲線PD1 の面に隠れている部分を陰線処理する。
+
+
+関数 Crvsfparadata(name,PD1,PD2, 式)
+機能 曲面による曲線の陰線処理を行う。
+説明 曲線PD1 と曲面PD2 について，PD1 はPD2 による陰線処理を行う。
+
+
+上の関数の中で，スケルトン処理（Skeletonparadata）した曲線に，もとの曲線の属性（特に色）を残す要望があった。通常のSkeletonparadataの使用法では，扱う曲線が全て同じ属性となるため，次のような工夫をする。
+
+if(skeleflg==1,
+ tmp1=["ax3d","sc3d1","sl3d1"];
+ Skeletonparadata("1",["sc3d1"],tmp1,[1.5,"File=y","Color=red"]);
+ Skeletonparadata("2",["sl3d1"],tmp1,[1.5,"File=y","Color=green"]);
+ Skeletonparadata("3",["ax3d"],tmp1,[1.5,"File=y","Color=blue"]);
+);
+

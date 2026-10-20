@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KeTCindyの陰線処理と曲線の色の保持</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    max-width: 900px; margin: 2rem auto; padding: 0 1.2rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,
+      "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.8;
+  }
+  h1 { font-size: 1.75rem; border-bottom: 2px solid #888; padding-bottom: .4rem; }
+  h2 { font-size: 1.25rem; margin-top: 1.8rem; }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  code { padding: .1em .28em; border-radius: 4px; background: rgba(127,127,127,.15); }
+  pre { padding: 1rem; overflow-x: auto; border: 1px solid #8888; border-radius: 8px; }
+  li { margin: .4rem 0; }
+  .note { border-left: 4px solid #888; padding: .5rem 1rem; margin: 1rem 0; }
+  .downloads li { margin: .8rem 0; }
+  a { overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <h1>KeTCindyの陰線処理と曲線の色の保持</h1>
+
+  <p>
+    KeTCindyには、対象となる図形に応じた陰線処理の関数があります。
+    ここでは、代表的な3つの関数の役割を整理し、スケルトン処理を行った曲線に
+    色を指定して出力する方法を紹介します。
+  </p>
+
+  <h2>1. 陰線処理に使う3つの関数</h2>
+  <ul>
+    <li>
+      <strong>Skeletonparadata：曲線どうしの陰線処理（スケルトン処理）</strong><br>
+      <code>Skeletonparadata(name, PDリスト, PDリスト, option)</code><br>
+      描画されている線や座標軸を対象に、線どうしの重なりを処理します。
+    </li>
+    <li>
+      <strong>Nohiddenbyfaces：面に隠れる曲線部分の処理</strong><br>
+      <code>Nohiddenbyfaces(name, PD1, PD2, option1, option2)</code><br>
+      <code>PD2</code>で指定した面に隠れる、<code>PD1</code>の曲線部分を処理します。
+    </li>
+    <li>
+      <strong>Crvsfparadata：曲面による曲線の陰線処理</strong><br>
+      <code>Crvsfparadata(name, PD1, PD2, 式)</code><br>
+      曲線<code>PD1</code>について、曲面<code>PD2</code>による陰線処理を行います。
+    </li>
+  </ul>
+
+  <h2>2. スケルトン処理後も曲線ごとの色を指定する</h2>
+  <p>
+    1回の<code>Skeletonparadata</code>で複数の曲線をまとめて処理すると、出力される曲線が同じ属性になり、元の曲線ごとの色の違いを出せません。
+    色を分けたいときは、処理対象を曲線ごとに分けて関数を呼び出し、
+    それぞれに色を指定する方法があります。
+  </p>
+  <p>例えば、曲線・直線・座標軸を赤・緑・青で出力する例です。</p>
+  <pre><code>if(skeleflg==1,
+  tmp1=["ax3d","sc3d1","sl3d1"];
+  Skeletonparadata("1",["sc3d1"],tmp1,[1.5,"File=y","Color=red"]);
+  Skeletonparadata("2",["sl3d1"],tmp1,[1.5,"File=y","Color=green"]);
+  Skeletonparadata("3",["ax3d"],tmp1,[1.5,"File=y","Color=blue"]);
+);</code></pre>
+  <p>
+    この例では、<code>sc3d1</code>、<code>sl3d1</code>、<code>ax3d</code>をそれぞれ別に処理し、
+    <code>Color=red</code>、<code>Color=green</code>、<code>Color=blue</code>で出力色を指定しています。
+    一方、<code>tmp1</code>には、各処理で陰線処理の比較対象とする3つの要素をまとめています。
+  </p>
+  <div class="note">
+    <strong>ポイント：</strong>
+    曲線ごとに色を分けたい場合は、処理対象を分けて<code>Skeletonparadata</code>を呼び出し、
+    <code>Color=...</code>でそれぞれの出力色を指定します。
+  </div>
+
+  <h2>3. 関連ファイル</h2>
+  <p>
+    サンプルのCinderellaファイル（<code>.cdy</code>）は、リンクをクリックすると案内メッセージが表示されます。
+    ダウンロードするにはリンクを右クリックし、「リンク先のファイルを別名で保存」などを選んでください。
+    HTMLファイルはリンクをクリックすると開きます。ブラウザで開いたHTMLの
+    <code>[Skele]</code>ボタンを押して、動作を確認してみてください。
+  </p>
+  <ul class="downloads">
+    <li><a href="s0502spacecurve-tricolor.cdy" download="s0502spacecurve-tricolor.cdy" onclick="alert('右クリックでダウンロードできます。'); return false;">s0502spacecurve-tricolor.cdy</a></li>
+    <li><a href="s0502spacecurve-tricolorjson.html">s0502spacecurve-tricolorjson.html</a></li>
+  </ul>
+</main>
+</body>
+</html>
